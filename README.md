@@ -7,6 +7,7 @@ In addition to the configs you'll need docker and docker compose installed and c
 
 #### marvelApiConfig.json
 - https://developer.marvel.com/account should display your keys once you've created an account
+- The API config needs to be saved as marvelApiConfig.json in api/src/.
 - Example contents: 
 ```json
 {
