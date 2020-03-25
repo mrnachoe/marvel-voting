@@ -3,6 +3,11 @@ import axios from "axios";
 import {receiveSessions} from "./sessions"
 import {BASE_API_URL} from "../constants/config";
 
+/**
+ * Comment
+ * No doc blocks or comments explaining what these functions do
+ * Someone entering this project needs to go through and investigate what each one does and where it does it
+ */
 export const requestSession = () => {
     return {
         type: types.REQUEST + types.SESSION

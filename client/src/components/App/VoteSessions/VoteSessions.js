@@ -1,42 +1,8 @@
 import React, {useEffect} from "react";
 import {fetchSessions} from "../../../actions/sessions";
 import {useDispatch, useSelector} from "react-redux";
-import {get, map} from "lodash"
-import styled from "styled-components";
-import {Link} from "react-router-dom"
-
-const CardWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  border: 1px solid #6b6e60;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 5px;
-  box-shadow: 0px 1px 1px 0px rgba(0,0,0,0.1);
-  background-color: white;
-  justify-content: space-between;
-`;
-
-const CardMeta = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const CardLabel = styled.div`
-  font-weight: 500;
-`;
-
-const CardLink = styled(Link)`
-  display: flex;
-  text-decoration: none;
-  cursor: pointer;
-  
-  &:focus, &:hover, &:visited, &:link, &:active {
-      text-decoration: none;
-      cursor: pointer;
-  }
-`;
+import {get, map} from "lodash";
+import { CardLabel, CardLink, CardMeta, CardWrapper } from './style';
 
 const VoteSessions = () => {
   const {sessions} = useSelector(state => state.sessions);
