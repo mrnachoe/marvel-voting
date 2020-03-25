@@ -1,4 +1,0 @@
-::ffff:172.20.0.1 - - [25/Mar/2020:01:14:34 +0000] "POST /votesss/-M3Cyj5f8Krfve9A9JaO HTTP/1.1" 404 168
-[0mPOST /votesss/-M3Cyj5f8Krfve9A9JaO [33m404[0m 0.910 ms - 168[0m
-[0mPOST /votes/-M3Cyj5f8Krfve9A9JaO [33m404[0m 0.280 ms - 166[0m
-[0mPOST /votes/-M3Cyj5f8Krfve9A9JaOsss [33m404[0m 0.177 ms - 169[0m
