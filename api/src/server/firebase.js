@@ -4,7 +4,7 @@ const adminServiceAccount = require("#root/serviceAccountKey.json");
 
 export const adminFirebase = admin.initializeApp({
     credential: admin.credential.cert(adminServiceAccount),
-    databaseURL: "https://marvel-voting-f4d37.firebaseio.com"
+    databaseURL: 'https://marvel-4d316.firebaseio.com',
 });
 
 export default adminFirebase;

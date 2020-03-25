@@ -5,6 +5,10 @@ import setupRoutes from "./routes";
 import setupLogs from './log';
 
 const app = express();
+/**
+ * Comment
+ * better if PORT is declared as an environment variable
+ */
 const PORT = 7000;
 
 app.use(bodyParser.json());

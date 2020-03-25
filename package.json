@@ -1,0 +1,25 @@
+{
+  "name": "marvel-voting",
+  "version": "1.0.0",
+  "description": "## Setup Two config files are needed. Before you begin you'll need a marvel developer account and firebase account",
+  "main": "index.js",
+  "scripts": {
+    "start": "concurrently \"npm run api\" \"npm run client\"",
+    "api": "cd api && npm run watch",
+    "client": "cd client && npm run watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mrnachoe/marvel-voting.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mrnachoe/marvel-voting/issues"
+  },
+  "homepage": "https://github.com/mrnachoe/marvel-voting#readme",
+  "devDependencies": {
+    "concurrently": "^5.1.0"
+  }
+}
