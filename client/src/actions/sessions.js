@@ -14,13 +14,6 @@ export const receiveSessions = (sessions) => {
     }
 };
 
-export const errorSessions = (errorMessage) => {
-    return {
-        type: types.ERROR + types.SESSION,
-        error: errorMessage
-    }
-};
-
 export const fetchSessions = () => async (dispatch) => {
     dispatch(requestSessions());
 

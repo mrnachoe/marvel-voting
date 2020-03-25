@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {fetchSessions} from "../../../actions/sessions";
-import {useSelector, useDispatch} from "react-redux";
-import {map, get} from "lodash"
+import {useDispatch, useSelector} from "react-redux";
+import {get, map} from "lodash"
 import styled from "styled-components";
 import {Link} from "react-router-dom"
 
@@ -49,18 +49,18 @@ const VoteSessions = () => {
   return map(sessions, (voteSess, key) => {
     const characters = get(voteSess, 'characters');
     return <CardWrapper key={key}>
-        <CardMeta>
-          <CardLabel>Session: {key}</CardLabel>
-          <ul>
+      <CardMeta>
+        <CardLabel>Session: {key}</CardLabel>
+        <ul>
           {
             map(characters, character => {
               return <li key={character}>{character}</li>
             })
           }
-          </ul>
-        </CardMeta>
+        </ul>
+      </CardMeta>
 
-        <CardLink to={`/vote/${key}`}>Vote on this</CardLink>
+      <CardLink to={`/vote/${key}`}>Vote on this</CardLink>
     </CardWrapper>
   });
 };

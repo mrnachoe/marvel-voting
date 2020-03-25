@@ -1,16 +1,13 @@
 import React, {useEffect} from 'react';
 import styled from "styled-components";
 import Vote from "./Vote";
-import Voter from "./Voter";
 import VoteSessions from "./VoteSessions";
-import {connect, useDispatch} from "react-redux";
-import {addVoter} from "../../actions/voter";
-import {
-    BrowserRouter as Router,
-    Switch,
-    Route,
-    Link
-} from "react-router-dom";
+import {useDispatch} from "react-redux";
+import {v4 as uuidv4} from 'uuid';
+import {cookieName} from "../../constants/cookies";
+import {makeSession} from "../../actions/session";
+import {BrowserRouter as Router, Link, Route, Switch, useHistory} from "react-router-dom";
+import {useCookies} from 'react-cookie';
 
 
 const AppWrapper = styled.div`
@@ -56,46 +53,58 @@ const StyledLink = styled(Link)`
     }
 `;
 
-const App = ({voter}) => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        if (!voter.name) {
-            const name = localStorage.getItem('voterName');
-            const uuid = localStorage.getItem('voterUUID');
-            dispatch(addVoter({name, uuid}))
-        }
-    }, []);
+const CreateSession = styled.button`
 
-    return (
-        <Router>
-            <AppWrapper>
-                <Header>
-                    <StyledLink to={"/"}>
-                        <h3>Marvel Voting</h3>
-                    </StyledLink>
-                </Header>
-                <AppContents>
-                    <AppBody>
-                        <Switch>
-                            <Route path="/vote/:id" children={<Vote/>}/>
-                            <Route path="/" children={ <VoteSessions/>}/>
-                        </Switch>
-                    </AppBody>
-                    <AppSideBar>
-                        <Voter/>
-                    </AppSideBar>
-                </AppContents>
+`;
 
-                <Footer>
+const App = () => {
+  const [cookies, setCookie] = useCookies([cookieName]);
+  const dispatch = useDispatch();
 
-                </Footer>
-            </AppWrapper>
-        </Router>
-    )
+  useEffect(() => {
+    if (!cookies[cookieName]) {
+      setCookie(cookieName, uuidv4());
+    }
+  }, []);
+
+  return (
+    <Router>
+      <AppWrapper>
+        <Header>
+          <StyledLink to={"/"}>
+            <h3>Marvel Voting</h3>
+          </StyledLink>
+        </Header>
+        <AppContents>
+          <Switch>
+          <Route path="/vote/:id" render={() =>{
+            return <>
+              <AppBody>
+                <Vote/>
+              </AppBody>
+            </>
+          }}/>
+          <Route path="/" render={() => {
+            return <>
+              <AppBody>
+                <VoteSessions/>
+              </AppBody>
+              <AppSideBar>
+                <CreateSession onClick={() => {
+                  dispatch(makeSession());
+                }}>
+                  Create New Session</CreateSession>
+              </AppSideBar>
+            </>
+          }}/>
+          </Switch>
+        </AppContents>
+        <Footer>
+
+        </Footer>
+      </AppWrapper>
+    </Router>
+  )
 };
 
-export default connect((state) => {
-    return {
-        voter: state.voter
-    }
-}, null)(App);
+export default App;

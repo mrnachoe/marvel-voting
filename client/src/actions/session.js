@@ -1,5 +1,7 @@
 import * as types from '#root/constants/ActionTypes';
 import axios from "axios";
+import {receiveSessions} from "./sessions"
+import {BASE_API_URL} from "../constants/config";
 
 export const requestSession = () => {
     return {
@@ -14,18 +16,25 @@ export const receiveSession = (session) => {
     }
 };
 
-export const errorSessions = (errorMessage) => {
+export const submitSession = () => {
     return {
-        type: types.ERROR + types.SESSION,
-        error: errorMessage
+        type: types.REQUEST + types.SESSION
     }
 };
 
 export const fetchSession = (id) => async (dispatch) => {
     dispatch(requestSession());
 
-    await axios.get(`http://localhost:7000/session/${id}`).then((response) => {
+    await axios.get(`${BASE_API_URL}/sessions/${id}`).then((response) => {
         dispatch(receiveSession(response.data));
+    })
+};
+
+export const makeSession = () => async (dispatch) => {
+    dispatch(submitSession());
+
+    await axios.post(`${BASE_API_URL}/sessions`).then((response) => {
+        dispatch(receiveSessions(response.data));
     })
 };
 

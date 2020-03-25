@@ -1,4 +1,4 @@
 node_modules
 yarn-error.log
-serviceAccountKey.json
-marvelApiConfig.json
+src/serviceAccountKey.json
+src/marvelApiConfig.json

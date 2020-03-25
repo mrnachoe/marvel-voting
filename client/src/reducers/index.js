@@ -1,13 +1,13 @@
-import { combineReducers } from 'redux';
-import voter from './voter';
+import {combineReducers} from 'redux';
 import sessions from './sessions';
 import session from './session';
+import votes from './votes';
 
 
 const rootReducer = combineReducers({
-    voter,
-    sessions,
-    session
+  sessions,
+  session,
+  votes,
 });
 
 export default rootReducer;
