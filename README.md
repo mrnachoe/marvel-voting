@@ -39,5 +39,7 @@ In addition to the configs you'll need docker and docker compose installed and c
 
 ## Run
 ```bash
+$ yarn --cwd client/
+$ yarn --cwd api/
 $ docker-compose up
 ```
